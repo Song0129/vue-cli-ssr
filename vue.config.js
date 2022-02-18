@@ -5,6 +5,7 @@ const mode = getArg('mode');
 const NODE = mode === 'server';
 const isDev = process.env.NODE_ENV && process.env.NODE_ENV.indexOf('dev') > -1;
 const removeHTML = require('./plugins/removeHtml');
+const webpack = require('webpack');
 
 const path = require('path');
 const resolve = dir => path.join(__dirname, dir);
