@@ -1,0 +1,26 @@
+{
+  "theme": {
+    "c1": "#ff00ff",
+    "c2": "#7B7D7F",
+    "c3": "#BBBCBD",
+    "c4": "#DCDDDF",
+    "c5": "#F0F0F3",
+    "borderColor": "#F6F6F7",
+    "themeColor": "#FF7E36",
+    "globalColor": "#29CD86",
+    "globalBg": "#F7F7F7",
+    "greyBg": "#F0F0F3",
+    "redPoint": "#EF544D",
+    "redBorder": "#DA4F50",
+    "danger": "#9B2930",
+    "danger-disable": "#E77279",
+    "button-second ": "#D6BCA0",
+    "a1": "44px",
+    "a2": "40px",
+    "a3": "32px",
+    "a4": "30px",
+    "a5": "28px",
+    "a6": "26px",
+    "btnHeight": "134px"
+  }
+}

@@ -1,0 +1,11 @@
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd {
+  /* 默认有边距，都要清除 */
+  margin: 0;
+  padding: 0;
+  /* 去掉列表的原点 */
+  list-style: none;
+  /* 默认鼠标 */
+  cursor: default;
+  box-sizing: border-box;
+}
+

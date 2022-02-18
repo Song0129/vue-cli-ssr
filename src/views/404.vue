@@ -1,5 +1,5 @@
 <template lang="">
-	<div>This is 404 page;</div>
+	<div class="title">This is 404 page;</div>
 </template>
 <script>
 export default {
@@ -8,4 +8,8 @@ export default {
 	},
 };
 </script>
-<style lang=""></style>
+<style lang="less">
+.title {
+	color: @c1;
+}
+</style>
