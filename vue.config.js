@@ -9,6 +9,7 @@ const removeHTML = require('./plugins/removeHtml');
 const path = require('path');
 const resolve = dir => path.join(__dirname, dir);
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const productionGzipExtensions = ['js', 'css'];
 const theme = require('./src/assets/css/CommonLess.json').theme;
 
 function getArg(k) {
