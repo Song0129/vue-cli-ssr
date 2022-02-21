@@ -2,7 +2,9 @@
 	<div>
 		myForm
 		<a-button @click="getData">点击获取数据</a-button>
-		<div style="height: 2000px; width: 300px"></div>
+		<div style="height: 2000px; width: 300px">
+			<a-table :columns="columns" :data-source="listData" :rowKey="record => record.id"> </a-table>
+		</div>
 	</div>
 </template>
 
@@ -10,14 +12,39 @@
 export default {
 	name: 'Form',
 	data() {
-		return {};
+		return {
+			columns: [
+				{
+					dataIndex: 'id',
+					key: 'id',
+					slots: { title: 'customTitle' },
+					scopedSlots: { customRender: 'name' },
+				},
+				{
+					title: 'image',
+					dataIndex: 'image',
+					key: 'image',
+				},
+				{
+					title: 'link',
+					dataIndex: 'link',
+					key: 'link',
+				},
+			],
+			listData: null,
+		};
 	},
-	created() {},
+	created() {
+		this.getData();
+	},
 	mounted() {},
 	computed: {},
 	methods: {
-		getData() {
-			this.$axios.get('http://localhost:8008/api1/students');
+		async getData() {
+			let res = await this.$axios.get('https://song-api.only0129.top/slides');
+			console.log('res', res);
+
+			this.listData = res.data;
 		},
 	},
 };
