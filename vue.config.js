@@ -110,7 +110,11 @@ if (mode === 'client') {
 					},
 				},
 			});
+			config.optimization.runtimeChunk = true;
 			/* 提取公共代码 */
+			new webpack.HotModuleReplacementPlugin({
+				multiStep: false,
+			});
 		},
 	});
 } else if (mode === 'server') {
