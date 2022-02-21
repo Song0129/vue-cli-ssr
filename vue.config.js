@@ -53,6 +53,16 @@ if (mode === 'client') {
 			plugins: [
 				new VueSSRClientPlugin(),
 				new removeHTML({ name: 'index' }), //访问网页根目录时会默认走index.html，所以删除它，直接走预置模板
+				new CompressionWebpackPlugin({
+					algorithm: 'gzip',
+					test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+					threshold: 10240,
+					minRatio: 0.8,
+				}),
+				new webpack.optimize.LimitChunkCountPlugin({
+					maxChunks: 5,
+					minChunkSize: 100,
+				}),
 			],
 			// 开发生产共同配置
 			resolve: {
@@ -63,6 +73,44 @@ if (mode === 'client') {
 					'@c': path.resolve(__dirname, './src/components'),
 				},
 			},
+		},
+		chainWebpack: config => {
+			//https://cli.vuejs.org/zh/config/#chainwebpack
+			config.when(process.env.NODE_ENV === 'development', config => config.devtool('cheap-module-eval-source-map'));
+			/* 修复热更新失效*/
+			config.resolve.symlinks(true);
+			/* 添加分析工具 */
+			if (process.env.NODE_ENV === 'production') {
+				if (process.env.npm_config_report) {
+					console.log(process.env.npm_config_report);
+					config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin).end();
+					config.plugins.delete('prefetch');
+				}
+			}
+			config.optimization.splitChunks({
+				chunks: 'all',
+				cacheGroups: {
+					libs: {
+						name: 'chunk-libs',
+						test: /[\\/]node_modules[\\/]/,
+						priority: 10,
+						chunks: 'initial', // only package third parties that are initially dependent
+					},
+					antd: {
+						name: 'chunk-antd', // split elementUI into a single package
+						priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+						test: /[\\/]node_modules[\\/]_?ant-design-vue(.*)/,
+					},
+					commons: {
+						name: 'chunk-commons',
+						test: resolve('src/components'), // can customize your rules
+						minChunks: 3, //  minimum common number
+						priority: 5,
+						reuseExistingChunk: true,
+					},
+				},
+			});
+			/* 提取公共代码 */
 		},
 	});
 } else if (mode === 'server') {
