@@ -6,12 +6,11 @@
  * npm run build ==>>production
  */
 
-
-let baseUrl = 'https://song-api.only0129.top'
-if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'https://song-api.only0129.top';
-} else if(process.env.NODE_ENV === 'production'){
-  baseUrl = 'https://song-api.only0129.top';
+let baseUrl = "https://song.api.only0129.top";
+if (process.env.NODE_ENV === "development") {
+	baseUrl = "https://song.api.only0129.top";
+} else if (process.env.NODE_ENV === "production") {
+	baseUrl = "https://song.api.only0129.top";
 }
 
-module.exports =  baseUrl
+module.exports = baseUrl;
