@@ -31,79 +31,79 @@
 <script>
 const columnsOne = [
 	{
-		dataIndex: 'name',
-		key: 'name',
-		slots: { title: 'customTitle' },
-		scopedSlots: { customRender: 'name' },
+		dataIndex: "name",
+		key: "name",
+		slots: { title: "customTitle" },
+		scopedSlots: { customRender: "name" },
 	},
 	{
-		title: 'Age',
-		dataIndex: 'age',
-		key: 'age',
+		title: "Age",
+		dataIndex: "age",
+		key: "age",
 	},
 	{
-		title: 'Address',
-		dataIndex: 'address',
-		key: 'address',
+		title: "Address",
+		dataIndex: "address",
+		key: "address",
 	},
 	{
-		title: 'Tags',
-		key: 'tags',
-		dataIndex: 'tags',
-		scopedSlots: { customRender: 'tags' },
+		title: "Tags",
+		key: "tags",
+		dataIndex: "tags",
+		scopedSlots: { customRender: "tags" },
 	},
 	{
-		title: 'Action',
-		key: 'action',
-		scopedSlots: { customRender: 'action' },
+		title: "Action",
+		key: "action",
+		scopedSlots: { customRender: "action" },
 	},
 ];
 
 const dataOne = [
 	{
-		key: '1',
-		name: 'John Brown',
+		key: "1",
+		name: "John Brown",
 		age: 32,
-		address: 'New York No. 1 Lake Park',
-		tags: ['nice', 'developer'],
+		address: "New York No. 1 Lake Park",
+		tags: ["nice", "developer"],
 	},
 	{
-		key: '2',
-		name: 'Jim Green',
+		key: "2",
+		name: "Jim Green",
 		age: 42,
-		address: 'London No. 1 Lake Park',
-		tags: ['loser'],
+		address: "London No. 1 Lake Park",
+		tags: ["loser"],
 	},
 	{
-		key: '3',
-		name: 'Joe Black',
+		key: "3",
+		name: "Joe Black",
 		age: 32,
-		address: 'Sidney No. 1 Lake Park',
-		tags: ['cool', 'teacher'],
+		address: "Sidney No. 1 Lake Park",
+		tags: ["cool", "teacher"],
 	},
 ];
 export default {
-	name: 'Form',
+	name: "Form",
 	data() {
 		return {
 			dataOne,
 			columnsOne,
 			columns: [
 				{
-					dataIndex: 'id',
-					key: 'id',
-					slots: { title: 'customTitle' },
-					scopedSlots: { customRender: 'id' },
+					dataIndex: "id",
+					key: "id",
+					slots: { title: "customTitle" },
+					scopedSlots: { customRender: "id" },
 				},
 				{
-					title: 'image',
-					dataIndex: 'image',
-					key: 'image',
+					title: "image",
+					dataIndex: "image",
+					key: "image",
 				},
 				{
-					title: 'link',
-					dataIndex: 'link',
-					key: 'link',
+					title: "link",
+					dataIndex: "link",
+					key: "link",
 				},
 			],
 			listData: null,
@@ -116,8 +116,8 @@ export default {
 	computed: {},
 	methods: {
 		async getData() {
-			let res = await this.$axios.get('https://song-api.only0129.top/slides');
-			console.log('res', res);
+			let res = await this.$axios.get("https://song.api.only0129.top/slides");
+			console.log("res", res);
 
 			this.listData = res.data;
 		},
